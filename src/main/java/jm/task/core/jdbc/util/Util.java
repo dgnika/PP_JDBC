@@ -10,6 +10,9 @@ public class Util {
     private static final String password = "root";
     private static final String driver = "com.mysql.cj.jdbc.Driver";
 
+    private Util() {
+    }
+
     public static Connection getConnection() {
         Connection connection = null;
         try {
@@ -19,5 +22,15 @@ public class Util {
             e.printStackTrace();
         }
         return connection;
+    }
+
+    public static void closeConnection(Connection connection) {
+        try {
+            if (connection != null) {
+                connection.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
